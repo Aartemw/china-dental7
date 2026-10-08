@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Цены — TopChinaStom</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/prices.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div class="container header__inner">
+
+        <a href="index.html" class="logo">
+            TopChinaStom
+        </a>
+
+        <nav class="nav">
+
+            <a href="index.html#services">
+                Услуги
+            </a>
+
+            <a href="prices.html">
+                Цены
+            </a>
+
+            <a href="index.html#process">
+                Как проходит
+            </a>
+
+            <a href="index.html#clinic">
+                Клиника
+            </a>
+
+            <a href="index.html#reviews">
+                Отзывы
+            </a>
+
+        </nav>
+
+
+        <a
+            href="index.html#contact"
+            class="header__button"
+        >
+            Получить консультацию
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            aria-label="Открыть меню"
+        >
+
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+    <section class="prices-page">
+
+        <div class="container">
+
+
+            <!-- ЗАГОЛОВОК -->
+
+            <div class="prices-page__heading">
+
+                <div class="section-label">
+
+                    <span></span>
+
+                    Стоимость
+
+                </div>
+
+
+                <h1>
+
+                    Прайс на услуги
+
+                    <span>
+                        TopChinaStom.
+                    </span>
+
+                </h1>
+
+
+                <p>
+
+                    Стоимость процедур определяется после
+                    консультации, диагностики и составления
+                    индивидуального плана лечения.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =========================
+                 ЦЕНЫ ИЗ GOOGLE ТАБЛИЦЫ
+            ========================= -->
+
+            <div id="prices-data">
+
+                <div class="prices-loading">
+
+                    Загружаем актуальные цены...
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 CONTACT BLOCK
+            ========================= -->
+
+            <div class="prices-page__contact">
+
+                <div>
+
+                    <strong>
+                        Не нашли нужную услугу?
+                    </strong>
+
+
+                    <p>
+
+                        Оставьте заявку — мы поможем уточнить
+                        стоимость и подобрать подходящий вариант.
+
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="index.html#contact"
+                    class="prices-page__button"
+                >
+
+                    Получить консультацию
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+
+        <div class="footer__top">
+
+
+            <div class="footer__brand">
+
+                <a
+                    href="index.html"
+                    class="logo"
+                >
+                    TopChinaStom
+                </a>
+
+
+                <p>
+
+                    Организация поездок на лечение зубов
+                    в Хэйхэ, Китай.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="footer__links">
+
+                <a href="index.html#services">
+                    Услуги
+                </a>
+
+                <a href="prices.html">
+                    Цены
+                </a>
+
+                <a href="index.html#process">
+                    Как проходит
+                </a>
+
+                <a href="index.html#clinic">
+                    Клиника
+                </a>
+
+                <a href="index.html#reviews">
+                    Отзывы
+                </a>
+
+                <a href="index.html#contact">
+                    Контакты
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer__bottom">
+
+            <span>
+                © TopChinaStom
+            </span>
+
+            <span>
+                Лечение зубов в Китае
+            </span>
+
+        </div>
+
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================
+     MOBILE CONSULTATION
+========================= -->
+
+<a
+    href="index.html#contact"
+    class="mobile-consultation"
+>
+
+    Получить консультацию
+
+    <span>
+        ↗
+    </span>
+
+</a>
+
+
+
+<!-- =========================
+     MAIN SCRIPT
+========================= -->
+
+<script src="js/script.js"></script>
+
+
+
+<!-- =========================
+     GOOGLE SHEETS PRICES
+========================= -->
+
+<script>
+
+const PRICES_CSV =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_Co1PU82huHLqWSz4t7YdvCF-oThPeiQ62vieMpxaV9VWVqkmeXEOflcS7Ru9yxy9vhldEJqXGNY9/pub?gid=0&single=true&output=csv";
+
+
+
+/* =========================================
+   ОПИСАНИЯ КАТЕГОРИЙ
+========================================= */
+
+const categoryDescriptions = {
+
+    "Лечение зубов":
+        "Лечение кариеса, восстановление зубов и другие стоматологические процедуры.",
+
+    "Протезирование":
+        "Восстановление зубов с использованием современных ортопедических конструкций.",
+
+    "Имплантация":
+        "Восстановление отсутствующих зубов с помощью имплантации.",
+
+    "Ортодонтия":
+        "Исправление положения зубов и прикуса.",
+
+    "Общее оздоровление":
+        "Дополнительные процедуры и методы восстановления.",
+
+    "Общее оздоровление организма":
+        "Дополнительные процедуры и методы восстановления.",
+
+    "Косметология":
+        "Современные косметологические процедуры и индивидуальные программы."
+
+};
+
+
+
+/* =========================================
+   CSV PARSER
+========================================= */
+
+function parseCSV(text) {
+
+    const rows = [];
+
+    let row = [];
+
+    let value = "";
+
+    let insideQuotes = false;
+
+
+    for (let i = 0; i < text.length; i++) {
+
+        const char = text[i];
+
+        const next = text[i + 1];
+
+
+        if (
+            char === '"' &&
+            insideQuotes &&
+            next === '"'
+        ) {
+
+            value += '"';
+
+            i++;
+
+            continue;
+
+        }
+
+
+        if (char === '"') {
+
+            insideQuotes = !insideQuotes;
+
+            continue;
+
+        }
+
+
+        if (
+            char === ',' &&
+            !insideQuotes
+        ) {
+
+            row.push(value.trim());
+
+            value = "";
+
+            continue;
+
+        }
+
+
+        if (
+            (char === '\n' || char === '\r') &&
+            !insideQuotes
+        ) {
+
+            if (
+                char === '\r' &&
+                next === '\n'
+            ) {
+
+                i++;
+
+            }
+
+
+            row.push(value.trim());
+
+            value = "";
+
+
+            if (
+                row.some(
+                    cell => cell !== ""
+                )
+            ) {
+
+                rows.push(row);
+
+            }
+
+
+            row = [];
+
+            continue;
+
+        }
+
+
+        value += char;
+
+    }
+
+
+    if (
+        value !== "" ||
+        row.length > 0
+    ) {
+
+        row.push(value.trim());
+
+
+        if (
+            row.some(
+                cell => cell !== ""
+            )
+        ) {
+
+            rows.push(row);
+
+        }
+
+    }
+
+
+    return rows;
+
+}
+
+
+
+/* =========================================
+   ЗАЩИТА HTML
+========================================= */
+
+function escapeHTML(text) {
+
+    return String(text)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+
+/* =========================================
+   ЗАГРУЗКА ЦЕН
+========================================= */
+
+async function loadPrices() {
+    const container = document.getElementById("prices-data");
+
+    try {
+        const response = await fetch(PRICES_CSV + "&t=" + Date.now());
+
+        if (!response.ok) {
+            throw new Error("Не удалось загрузить таблицу");
+        }
+
+        const csvText = await response.text();
+        const rows = parseCSV(csvText);
+
+        if (!rows.length) {
+            throw new Error("Таблица пустая");
+        }
+
+        // Ищем строку с названиями столбцов
+        const headerIndex = rows.findIndex(row => {
+            const headers = row.map(cell => cell.trim().toLowerCase());
+
+            return (
+                headers.includes("категория") &&
+                headers.includes("услуга") &&
+                headers.includes("описание") &&
+                headers.includes("цена") &&
+                headers.includes("показывать")
+            );
+        });
+
+        if (headerIndex === -1) {
+            throw new Error("Не найдена строка с заголовками таблицы");
+        }
+
+        const headers = rows[headerIndex].map(cell =>
+            cell.trim().toLowerCase()
+        );
+
+        const categoryIndex = headers.indexOf("категория");
+        const serviceIndex = headers.indexOf("услуга");
+        const descriptionIndex = headers.indexOf("описание");
+        const priceIndex = headers.indexOf("цена");
+        const showIndex = headers.indexOf("показывать");
+
+        // Новые столбцы F и G
+        const categoryOrderIndex = headers.indexOf("порядок категории");
+        const serviceOrderIndex = headers.indexOf("порядок услуги");
+
+        const services = [];
+
+        for (let i = headerIndex + 1; i < rows.length; i++) {
+            const row = rows[i];
+
+            const category = (row[categoryIndex] || "").trim();
+            const service = (row[serviceIndex] || "").trim();
+            const description = (row[descriptionIndex] || "").trim();
+            const price = (row[priceIndex] || "").trim();
+            const show = (row[showIndex] || "").trim().toLowerCase();
+
+            if (!category || !service) {
+                continue;
+            }
+
+            // Показываем только строки с "Да"
+            if (
+                show !== "да" &&
+                show !== "yes" &&
+                show !== "true"
+            ) {
+                continue;
+            }
+
+            // Получаем порядок категории
+            const categoryOrderRaw =
+                categoryOrderIndex !== -1
+                    ? (row[categoryOrderIndex] || "").trim()
+                    : "";
+
+            // Получаем порядок услуги
+            const serviceOrderRaw =
+                serviceOrderIndex !== -1
+                    ? (row[serviceOrderIndex] || "").trim()
+                    : "";
+
+            const categoryOrder =
+                parseFloat(categoryOrderRaw.replace(",", ".")) || 999999;
+
+            const serviceOrder =
+                parseFloat(serviceOrderRaw.replace(",", ".")) || 999999;
+
+            services.push({
+                category,
+                service,
+                description,
+                price,
+                categoryOrder,
+                serviceOrder
+            });
+        }
+
+        // Группируем услуги по категориям
+        const categories = {};
+
+        services.forEach(item => {
+            if (!categories[item.category]) {
+                categories[item.category] = {
+                    name: item.category,
+                    order: item.categoryOrder,
+                    services: []
+                };
+            }
+
+            categories[item.category].services.push(item);
+
+            // Если у категории где-то указан меньший номер —
+            // используем его
+            if (item.categoryOrder < categories[item.category].order) {
+                categories[item.category].order = item.categoryOrder;
+            }
+        });
+
+        // Сортируем категории по столбцу F
+        const sortedCategories = Object.values(categories).sort(
+            (a, b) => a.order - b.order
+        );
+
+        let html = "";
+
+        sortedCategories.forEach((category, categoryIndex) => {
+
+            // Сортируем услуги внутри категории по столбцу G
+            category.services.sort(
+                (a, b) => a.serviceOrder - b.serviceOrder
+            );
+
+            const description =
+                categoryDescriptions[category.name] || "";
+
+            html += `
+                <section class="price-category">
+
+                    <div class="price-category__heading">
+
+                        <span>
+                            ${String(categoryIndex + 1).padStart(2, "0")}
+                        </span>
+
+                        <div>
+                            <h2>
+                                ${escapeHTML(category.name)}
+                            </h2>
+
+                            ${
+                                description
+                                    ? `<p>${escapeHTML(description)}</p>`
+                                    : ""
+                            }
+                        </div>
+
+                    </div>
+
+                    <div class="price-list">
+            `;
+
+            category.services.forEach(item => {
+
+                html += `
+                    <div class="price-row">
+
+                        <div>
+                            <h3>
+                                ${escapeHTML(item.service)}
+                            </h3>
+
+                            ${
+                                item.description
+                                    ? `<p>${escapeHTML(item.description)}</p>`
+                                    : ""
+                            }
+                        </div>
+
+                        <strong>
+                            ${escapeHTML(item.price)}
+                        </strong>
+
+                    </div>
+                `;
+            });
+
+            html += `
+                    </div>
+                </section>
+            `;
+        });
+
+        if (!html) {
+            container.innerHTML = `
+                <div class="prices-error">
+                    <strong>Пока нет доступных услуг</strong>
+                    <p>
+                        Добавьте услуги в таблицу и установите
+                        «Да» в столбце «Показывать».
+                    </p>
+                </div>
+            `;
+            return;
+        }
+
+        container.innerHTML = html;
+
+    } catch (error) {
+
+        console.error(error);
+
+        container.innerHTML = `
+            <div class="prices-error">
+                <strong>Не удалось загрузить цены</strong>
+                <p>
+                    Попробуйте обновить страницу немного позже.
+                </p>
+            </div>
+        `;
+    }
+}
+
+
+
+/* =========================================
+   ЗАПУСК
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    loadPrices
+);
+
+</script>
+
+
+</body>
+
+</html>

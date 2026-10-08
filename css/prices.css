@@ -1,0 +1,277 @@
+/* =========================================
+   СТРАНИЦА ПРАЙСА
+========================================= */
+
+.prices-page {
+    padding: 150px 0 100px;
+}
+
+.prices-page__heading {
+    max-width: 720px;
+    margin-bottom: 75px;
+}
+
+.prices-page__heading h1 {
+    margin: 20px 0;
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1.05;
+    letter-spacing: -.045em;
+    color: #17221f;
+}
+
+.prices-page__heading h1 span {
+    color: #31756c;
+}
+
+.prices-page__heading p {
+    max-width: 570px;
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.75;
+    color: #75817d;
+}
+
+
+/* Категория */
+
+.price-category {
+    margin-bottom: 70px;
+}
+
+.price-category__heading {
+    display: grid;
+    grid-template-columns: 55px 1fr;
+    gap: 20px;
+    align-items: start;
+    margin-bottom: 25px;
+}
+
+.price-category__heading > span {
+    padding-top: 7px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    color: #31756c;
+}
+
+.price-category__heading h2 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: -.025em;
+    color: #17221f;
+}
+
+.price-category__heading p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #87918e;
+}
+
+
+/* Список */
+
+.price-list {
+    border-top: 1px solid #dfe7e3;
+}
+
+.price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    padding: 23px 25px;
+
+    border-bottom: 1px solid #dfe7e3;
+
+    transition:
+        background .2s ease,
+        padding .2s ease;
+}
+
+.price-row:hover {
+    background: #f5f8f6;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.price-row h3 {
+    margin: 0 0 6px;
+
+    font-size: 15px;
+    font-weight: 600;
+    color: #17221f;
+}
+
+.price-row p {
+    margin: 0;
+
+    max-width: 600px;
+
+    font-size: 12px;
+    line-height: 1.55;
+    color: #87918e;
+}
+
+.price-row strong {
+    flex-shrink: 0;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: #31756c;
+}
+
+
+/* Нижний блок */
+
+.prices-page__contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    margin-top: 20px;
+    padding: 30px 35px;
+
+    background: #f5f8f6;
+    border: 1px solid #dfe7e3;
+    border-radius: 20px;
+}
+
+.prices-page__contact strong {
+    display: block;
+    margin-bottom: 7px;
+
+    font-size: 17px;
+    color: #17221f;
+}
+
+.prices-page__contact p {
+    margin: 0;
+
+    font-size: 12px;
+    line-height: 1.6;
+    color: #75817d;
+}
+
+.prices-page__button {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 14px 20px;
+
+    border-radius: 11px;
+
+    background: #31756c;
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.prices-page__button:hover {
+    background: #285f58;
+    transform: translateY(-2px);
+}
+
+.prices-page__button span {
+    font-size: 18px;
+}
+
+
+/* =========================================
+   ТЕЛЕФОН
+========================================= */
+
+@media (max-width: 700px) {
+
+    .prices-page {
+        padding: 115px 0 70px;
+    }
+
+    .prices-page__heading {
+        margin-bottom: 50px;
+    }
+
+    .prices-page__heading h1 {
+        font-size: 42px;
+    }
+
+    .price-category {
+        margin-bottom: 50px;
+    }
+
+    .price-category__heading {
+        grid-template-columns: 40px 1fr;
+        gap: 12px;
+    }
+
+    .price-category__heading h2 {
+        font-size: 23px;
+    }
+
+    .price-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        padding: 20px 5px;
+    }
+
+    .price-row:hover {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .price-row strong {
+        font-size: 13px;
+    }
+
+    .prices-page__contact {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 25px 20px;
+    }
+
+    .prices-page__button {
+        justify-content: center;
+    }
+
+}
+
+/* =========================================
+   ЗАГРУЗКА / ОШИБКА ЦЕН
+========================================= */
+
+.prices-loading,
+.prices-error {
+    padding: 35px;
+    margin-bottom: 60px;
+    border: 1px solid #dfe7e3;
+    border-radius: 18px;
+    background: #f5f8f6;
+    color: #75817d;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.prices-error strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #17221f;
+    font-size: 16px;
+}
+
+.prices-error p {
+    margin: 0;
+}
